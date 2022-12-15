@@ -6,9 +6,9 @@ import { getData } from "./utils/data.utils";
 
 
 export type Monster = {
-  id: string,
-  name: string,
-  email: string,
+  id: string;
+  name: string;
+  email: string;
 }
 
 const App = () => {

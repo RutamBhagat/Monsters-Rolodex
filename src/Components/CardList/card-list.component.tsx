@@ -4,8 +4,8 @@ import { Monster } from "../../App";
 
 
 type CardListProps = {
-  monsters: Monster[],
-  input: string,
+  monsters: Monster[];
+  input: string;
 }
 
 const CardList = ({ monsters, input }: CardListProps) => {
