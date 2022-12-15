@@ -1,29 +1,29 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, ChangeEvent } from "react";
 import "./App.css";
 import CardList from "./Components/CardList/card-list.component";
 import Input from "./Components/Input/input.component";
+import { getData } from "./utils/data.utils";
+
+
+export type Monster = {
+  id: string,
+  name: string,
+  email: string,
+}
 
 const App = () => {
-  const [monsters, setMonsters] = useState([]);
+  const [monsters, setMonsters] = useState<Monster[]>([]);
   const [input, setInput] = useState("");
-  console.log("rendered")
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          "https://jsonplaceholder.typicode.com/users"
-        );
-        const data = await response.json();
-        setMonsters(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
+    const fetchUsers = async () => {
+      const users = await getData<Monster[]>("https://jsonplaceholder.typicode.com/users")
+      setMonsters(users)
+    }
+    fetchUsers()
   }, []);
 
-  const onInputChange = (event) => {
+  const onInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setInput(event.target.value);
   };
 

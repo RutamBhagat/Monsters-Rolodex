@@ -1,6 +1,11 @@
 import React from "react";
+import { Monster } from "../../App";
 
-const Card = ({ monster }) => {
+type CardProps = {
+  monster: Monster;
+};
+
+const Card = ({ monster }: CardProps) => {
   const { id, name, email } = monster;
   return (
     <div
@@ -9,7 +14,7 @@ const Card = ({ monster }) => {
     >
       <img
         className="w-3/4 mx-auto mt-0 mb-5"
-        src={`https://robohash.org/${id*1000}?set=set2`}
+        src={`https://robohash.org/${Number.parseInt(id) * 1000}?set=set2`}
         alt="monster"
       />
       <h1 className="text-center text-gray-800 text-2xl mb-5">{name}</h1>
